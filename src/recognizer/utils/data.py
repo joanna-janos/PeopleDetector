@@ -13,4 +13,4 @@ def get_data_filenames(path_to_data):
     List[str]
             Filenames
     """
-    return [basename(normpath(f)) for f in glob.glob(path_to_data + "*.jpg")]
+    return [basename(normpath(f)) for f in glob.glob(path_to_data + "*.png")]
