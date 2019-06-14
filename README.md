@@ -23,12 +23,15 @@ Default directory is called `config` and is under `yolo` directory.
 If you need any help, run `python main.py --help`
 
 ### Results
-On right side are presented results.
 
-Recognizer can draw boxes for more than one person on image. Person can stay in shadow and be turned. <br>
-![Before](data/FudanPed00027.png)
-![After](results/FudanPed00027.png)
+1. Recognizer can draw boxes for more than one person on image. Person can stay in shadow and be turned. <br>
+**Before:**  <br>
+![Before](data/FudanPed00027.png) <br>
+**After:**  <br>
+![After](results/FudanPed00027.png) <br>
 
-Sometimes recognizer marks two people as one detected object. <br>
-![Before](data/FudanPed00014.png)
-![After](results/FudanPed00014.png)
+2. Sometimes recognizer marks two people as one detected object. <br>
+**Before:**  <br>
+![Before](data/FudanPed00014.png) <br>
+**After:**  <br>
+![After](results/FudanPed00014.png) 
