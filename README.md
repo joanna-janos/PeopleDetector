@@ -21,3 +21,14 @@ Default directory is called `config` and is under `yolo` directory.
 3. Go to `recognizer` directory and run `python main.py` (there are 4 possible arguments to set: data path, results path, model config path and which files should be pass to recognizer).
 
 If you need any help, run `python main.py --help`
+
+### Results
+On right side are presented results.
+
+Recognizer can draw boxes for more than one person on image. Person can stay in shadow and be turned. <br>
+![Before](data/FudanPed00027.png)
+![After](results/FudanPed00027.png)
+
+Sometimes recognizer marks two people as one detected object. <br>
+![Before](data/FudanPed00014.png)
+![After](results/FudanPed00014.png)
