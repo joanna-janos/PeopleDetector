@@ -1,16 +1,23 @@
 import glob
+import typing
 from os.path import normpath, basename
 
 
-def get_data_filenames(path_to_data):
-    """Get filenames of default dataset.
+def get_filenames(
+        path_to_data
+) -> typing.List[str]:
+    """Get filenames
     Parameters
     ----------
-    directory : directory with data
+    path_to_data : directory with data
 
     Returns
     -------
     List[str]
             Filenames
     """
-    return [basename(normpath(f)) for f in glob.glob(path_to_data + "*.png")]
+    paths_to_data = []
+    for extension in ["png", "jpg"]:
+        paths_to_data += [basename(normpath(f)) for f in glob.glob(path_to_data + "*." + extension)]
+
+    return paths_to_data

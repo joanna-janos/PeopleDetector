@@ -14,7 +14,8 @@ def parse_arguments():
     parser.add_argument(
         "--filenames",
         default="",
-        help="Filename of files on which people will be recognized. Names MUST be separated by ',' and without spaces around them. Left blank if you want to recognize people on all images in data directory."
+        help="Filenames of files on which people will be recognized. Names MUST be separated by ','. "
+             "Recognition works for .png and .jpg files."
     )
 
     parser.add_argument(

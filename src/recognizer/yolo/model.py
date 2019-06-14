@@ -1,3 +1,5 @@
+import typing
+
 import cv2
 
 
@@ -10,7 +12,7 @@ class YOLOModel:
         self.model_input_width = 448
         self.model_input_height = 448
 
-    def get_output_layer_names(self):
+    def get_output_layer_names(self) -> typing.List[str]:
         """YOLO3 has more than one output layer giving the prediction, it returns all of them
 
         Returns
@@ -21,7 +23,7 @@ class YOLOModel:
         names = self.model.getLayerNames()
         return [names[unconnected_out_layer[0] - 1] for unconnected_out_layer in self.model.getUnconnectedOutLayers()]
 
-    def get_classes_to_recognize_by_model(self):
+    def get_classes_to_recognize_by_model(self) -> typing.List[str]:
         """Get all classes possible to recognize by yolo model.
 
         Returns
@@ -45,7 +47,7 @@ class YOLOModel:
         """
         return self.model
 
-    def get_input_width(self):
+    def get_input_width(self) -> int:
         """Get input width of model.
 
         Returns
@@ -55,7 +57,7 @@ class YOLOModel:
         """
         return self.model_input_width
 
-    def get_input_height(self):
+    def get_input_height(self) -> int:
         """Get input height of model.
 
         Returns

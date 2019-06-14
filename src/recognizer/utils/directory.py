@@ -1,7 +1,9 @@
 import pathlib
 
 
-def create_not_existing_directory(directory: str):
+def create_not_existing_directory(
+        directory: str
+):
     """Create not existing directory. If directory exists, do nothing.
     Parameters
     ----------

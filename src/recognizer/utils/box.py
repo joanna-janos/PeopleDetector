@@ -1,32 +1,40 @@
+import typing
+
 import cv2
 import numpy as np
 
 
-def get_box_dimensions(result, img_height, img_width):
+def get_box_dimensions(
+        result: typing.List[float], img_height: float, img_width: float
+) -> typing.List[int]:
     """Get dimensions of box for drawing purposes.
+    Box is scaled to fit to original image dimensions.
 
     Parameters
     ----------
-    result : box
+    result : box dimensions
     img_height : height of image
     img_width : width of image
 
     Returns
     -------
     List[int]
-            Box dimensions on image
+            Box dimensions fitted to original image.
     """
     width = result[2] * img_width
     height = result[3] * img_height
     left = result[0] * img_width - (width // 2)
     top = result[1] * img_height - (height // 2)
+
     return [int(left),
             int(top),
             int(width),
             int(height)]
 
 
-def get_boxes_and_scores_for_people_on_image(model, img, score_threshold=0.5):
+def get_boxes_and_scores_for_people_on_image(
+        model, img, score_threshold=0.8
+) -> typing.Tuple[typing.List[typing.List[int]], typing.List[float]]:
     """Get boxes dimensions on image and corresponding score (implicates "How sure is model that on image is a person?)."
 
     Parameters
@@ -38,26 +46,26 @@ def get_boxes_and_scores_for_people_on_image(model, img, score_threshold=0.5):
     Returns
     -------
     Tuple(List[List[int]], List[float])
-            Boxes where person is recognized with corresponding score
+            Scores with corresponding box dimensions where person is recognized.
     """
     boxes = []
     scores = []
-    classes_recognized_by_model = model.get_classes_to_recognize_by_model()
+    classes_to_recognize_by_model = model.get_classes_to_recognize_by_model()
     output_layer_names = model.get_output_layer_names()
     for output in model.get_model().forward(output_layer_names):
         for result in output:
-            measurements = len(result) - len(classes_recognized_by_model)
+            measurements = len(result) - len(classes_to_recognize_by_model)
             recognized_class_id = np.argmax(result[measurements:])
             score = result[measurements + recognized_class_id]
-            if score > score_threshold and classes_recognized_by_model[recognized_class_id] == 'person':
+            if score > score_threshold and classes_to_recognize_by_model[recognized_class_id] == 'person':
                 scores.append(float(score))
-                boxes.append(
-                    get_box_dimensions(result, img.shape[0], img.shape[1])
-                )
+                boxes.append(get_box_dimensions(result, img.shape[0], img.shape[1]))
     return boxes, scores
 
 
-def draw_boxes_on_img(img, boxes, scores, score_threshold=0.5):
+def draw_boxes_on_img(
+        img, boxes, scores, score_threshold=0.8
+):
     """Draw boxes on image where object where recognized.
 
     Parameters
