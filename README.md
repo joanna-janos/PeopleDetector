@@ -1,7 +1,7 @@
 <h1 align="center"><b><i>People recognizer</i></b></h1>
 <p align=center>
-    <a><img alt="YOLOv3 model" src="https://img.shields.io/badge/model-YOLOv3-blue"></a>
-    <a><img alt="Penn Fudan Database dataset" src="https://img.shields.io/badge/dataset-Penn Fudan Database-blue"></a>
+    <a><img alt="YOLOv3 model" src="https://img.shields.io/badge/Model-YOLOv3-blue"></a>
+    <a><img alt="Penn Fudan Database dataset" src="https://img.shields.io/badge/Dataset-Penn Fudan Database-blue"></a>
     <a><img alt="Supported img extensions" src="https://img.shields.io/badge/Supported input extensions-png, jpg-blue"></a> <br>
     <a><img alt="Python" src="https://img.shields.io/badge/python-3.7-blue.svg"></a>
     <a><img alt="OpenCV" src="https://img.shields.io/badge/OpenCV-3.4.2-blue.svg"></a>
