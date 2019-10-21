@@ -1,4 +1,4 @@
-<h1 align="center"><b><i>People recognizer</i></b></h1>
+<h1 align="center"><b><i>People detector</i></b></h1>
 <p align=center>
     <a><img alt="YOLOv3 model" src="https://img.shields.io/badge/Model-YOLOv3-blue"></a>
     <a><img alt="Penn Fudan Database dataset" src="https://img.shields.io/badge/Dataset-Penn Fudan Database-blue"></a>
@@ -11,7 +11,7 @@
     <a><img alt="Python" src="data/FudanPed00027.png"></a>
     <a><img alt="Python" src="results/FudanPed00027.png"></a>
     <br>
-    <i>Image on the left side was an input to recognizer. <br>
+    <i>Image on the left side was an input to detector. <br>
     On the right side is result with boxes indicating detected people.</i>
 </p>
 
@@ -33,21 +33,21 @@ As a dataset I chose [Penn-Fudan Database for Pedestrian Detection and Segmentat
 
 <h2> :interrobang: How does it work?</h2>
 
-You can recognize people on some choosen images or all in selected directory.
+You can detect people on some choosen images or all in selected directory.
 
 1. Prepare data directory with images (only .png and .jpg extensions are supported). \
  Default directory is called `data` and is in the same level as `src` directory.
-2. Prepare config for YOLOv3 model (configuration file, model weights and classes to be recognized). \
+2. Prepare config for YOLOv3 model (configuration file, model weights and classes to be detected). \
 Default directory is called `config` and is under `yolo` directory.
-3. Go to `recognizer` directory and run `python main.py` (there are 4 possible arguments to set: data path, results path, model config path and which files should be pass to recognizer).
+3. Go to `detector` directory and run `python main.py` (there are 4 possible arguments to set: data path, results path, model config path and which files should be pass to detector).
 
 If you need any help, run `python main.py --help`
 
 <h2> :sparkles: Results </h2>
 
-1. Recognizer can draw boxes for more than one person on image. Person can stay in shadow or even be turned. For an example input-output you can look at images at the beginning of this README.
+1. Detector can draw boxes for more than one person on image. Person can stay in shadow or even be turned. For an example input-output you can look at images at the beginning of this README.
 
-2. Sometimes recognizer marks two people as one detected object. <br>
+2. Sometimes detector marks two people as one detected object. <br>
 
 <p align=center>
     <a><img alt="Python" src="data/FudanPed00014.png" width="49%" height="50%"></a>

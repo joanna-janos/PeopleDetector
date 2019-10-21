@@ -23,13 +23,13 @@ class YOLOModel:
         names = self.model.getLayerNames()
         return [names[unconnected_out_layer[0] - 1] for unconnected_out_layer in self.model.getUnconnectedOutLayers()]
 
-    def get_classes_to_recognize_by_model(self) -> typing.List[str]:
-        """Get all classes possible to recognize by yolo model.
+    def get_classes_detected_by_model(self) -> typing.List[str]:
+        """Get all classes possible detected by yolo model.
 
         Returns
         -------
         List[str]
-                classes possible to recognize by yolo model
+                classes possible to detect by yolo model
         """
         classes = []
         with open(self.yolo_classes_path, 'r') as f:

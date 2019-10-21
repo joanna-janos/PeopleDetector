@@ -8,14 +8,14 @@ def parse_arguments():
     """Parse user provided arguments."""
 
     parser = argparse.ArgumentParser(
-        description="People recognizer."
+        description="People detector."
     )
 
     parser.add_argument(
         "--filenames",
         default="",
-        help="Filenames of files on which people will be recognized. Names MUST be separated by ','. "
-             "Recognition works for .png and .jpg files."
+        help="Filenames of files on which people will be detected. Names MUST be separated by ','. "
+             "Detection works only for .png and .jpg files."
     )
 
     parser.add_argument(

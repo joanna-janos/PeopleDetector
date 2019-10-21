@@ -4,8 +4,8 @@ from utils import box
 from yolo.model import YOLOModel
 
 
-class PeopleRecognizer:
-    """People recognizer for images"""
+class PeopleDetector:
+    """People detector for images"""
 
     def __init__(self, path_to_yolo_config):
         self.yolo = YOLOModel(path_to_yolo_config)
@@ -13,14 +13,14 @@ class PeopleRecognizer:
         self.input_width = self.yolo.get_input_width()
         self.input_height = self.yolo.get_input_height()
 
-    def recognize(
+    def detect(
             self, filenames, path_to_data, path_to_results
     ):
-        """Recognize people on images.
+        """Detect people on images.
 
         Parameters
         ----------
-        filenames : filenames for people recognition
+        filenames : filenames for people detection
         path_to_data : path to data directory
         path_to_results : path to result directory
         """

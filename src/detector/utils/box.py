@@ -40,24 +40,24 @@ def get_boxes_and_scores_for_people_on_image(
     Parameters
     ----------
     model : yolo model
-    img : image provided for people recognition
-    score_threshold : how sure should be model -  if score is above this value, person is recognized
+    img : image provided for people detection
+    score_threshold : how sure should be model -  if score is above this value, person is detected
 
     Returns
     -------
     Tuple(List[List[int]], List[float])
-            Scores with corresponding box dimensions where person is recognized.
+            Scores with corresponding box dimensions where person is detected.
     """
     boxes = []
     scores = []
-    classes_to_recognize_by_model = model.get_classes_to_recognize_by_model()
+    classes_detected_by_model = model.get_classes_detected_by_model()
     output_layer_names = model.get_output_layer_names()
     for output in model.get_model().forward(output_layer_names):
         for result in output:
-            measurements = len(result) - len(classes_to_recognize_by_model)
-            recognized_class_id = np.argmax(result[measurements:])
-            score = result[measurements + recognized_class_id]
-            if score > score_threshold and classes_to_recognize_by_model[recognized_class_id] == 'person':
+            measurements = len(result) - len(classes_detected_by_model)
+            detected_class_id = np.argmax(result[measurements:])
+            score = result[measurements + detected_class_id]
+            if score > score_threshold and classes_detected_by_model[detected_class_id] == 'person':
                 scores.append(float(score))
                 boxes.append(get_box_dimensions(result, img.shape[0], img.shape[1]))
     return boxes, scores
@@ -66,19 +66,19 @@ def get_boxes_and_scores_for_people_on_image(
 def draw_boxes_on_img(
         img, boxes, scores, score_threshold=0.8
 ):
-    """Draw boxes on image where object where recognized.
+    """Draw boxes on image where object where detected.
 
     Parameters
     ----------
-    img : image provided for object recognition
-    boxes : boxes dimensions where object are recognized
-    scores : scores for people recognition (should be corresponding to boxes)
-    score_threshold : how sure should be model -  if score is above this value, person is recognized
+    img : image provided for object detection
+    boxes : boxes dimensions where object are detected
+    scores : scores for people detection (should be corresponding to boxes)
+    score_threshold : how sure should be model -  if score is above this value, person is detected
 
     Returns
     -------
     image
-            Image with drawn boxes where object were recognized
+            Image with drawn boxes where object were detected
     """
     for i in cv2.dnn.NMSBoxes(boxes, scores, score_threshold, 0.4):
         box = boxes[i[0]]
